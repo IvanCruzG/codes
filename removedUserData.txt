@@ -1,0 +1,5 @@
+RemovedTime FirstName LastName UCID Email Note
+2019-03-12-00:00:00 Maria Anders 30012345 maria.a@ucalgary.ca None
+2019-03-15-20:07:43 James Wicker 30012346 james.w1@ucalgary.ca Violation of terms and services
+2019-03-17-07:04:20 Victor Hong 30012347 victor.h3@ucalgary.ca Removed due to student status change
+

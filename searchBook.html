@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<!-- This program searches for a book and finds it. a user can borrow a book if its found in the library -->
+<html>
+<head>
+    <!-- handles all the background attributes -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Library Management System</title>
+  <style type="text/css">
+  html, #page { padding:0; margin:0;}
+  body { margin:0; padding:0; width:100%; color:#959595; font:normal 12px/2.0em Sans-Serif;}
+  h1, h2, h3, h4, h5, h6 {color:darkgreen;}
+  #page { background:#fff;}
+  #header, #footer, #top-nav, #content, #content #contentbar, #content #sidebar { margin:0; padding:0;}
+
+  /* Logo */
+  #logo { padding:0; width:auto; float:left;}
+  #logo h1 a, h1 a:hover { color:darkgreen; text-decoration:none;}
+  #logo h1 span { color:#BCCE98;}
+
+  /* Header */
+  #header { background:#fff; }
+  #header-inner { margin:0 auto; padding:0; width:970px;}
+
+  /* Feature */
+  .feature { background:green;padding:18px;}
+  .feature-inner { margin:auto;width:970px; }
+  .feature-inner h1 {color:#DAE9BC;font-size:32px;}
+
+  /* Menu */
+  #top-nav { margin:0 auto; padding:0px 0 0; height:37px; float:right;}
+  #top-nav ul { list-style:none; padding:0; height:37px; float:left;}
+  #top-nav ul li { margin:0; padding:0 0 0 8px; float:left;}
+  #top-nav ul li a { display:block; margin:0; padding:8px 20px; color:green; text-decoration:none;}
+  #top-nav ul li.active a, #top-nav ul li a:hover { color:#BCCE98;}
+
+  /* Content */
+  #content-inner { margin:0 auto; padding:10px 0; width:90%;background:#fff;}
+  
+  #searchField {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-left: 80px;
+  }
+  
+  #search {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    border-radius: 7px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 10px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+
+  #table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  #table td, #table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  #table tr:nth-child(even){background-color: #f2f2f2;}
+
+  #table tr:hover {background-color: #ddd;}
+
+  #table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .button1 {font-size: 13px;}
+
+
+  #footer {
+    height: 100px;
+    background-color: lightgray;
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  /* Footerblurb */
+  #footerblurb { background:#DAE9BC;color:green;}
+  #footerblurb-inner { margin:0 auto; width:922px; padding:24px;}
+  #footerblurb .column { margin:0; text-align:justify; float:left;width:250px;padding:0 24px;}
+
+  /* Footer */
+  #footer { background:#fff;}
+  #footer-inner { margin:auto; text-align:center; padding:12px; width:922px;}
+  #footer a {color:green;text-decoration:none;}
+
+  /* Clear both sides to assist with div alignment  */
+  .clr { clear:both; padding:0; margin:0; width:100%; font-size:0px; line-height:0px;}
+  </style>
+
+</head>
+
+<body>
+
+  <div id="page">
+    <header id="header">
+      <div id="header-inner">
+        <div id="logo">
+            <!-- displays header -->
+           <h1><a href="#">University of Calgary<span> Library</span></a></h1>
+        </div>
+        <div id="top-nav">
+            <!-- displays Contact, FAQ, Help, Log Out. Each of these are linked to their own page -->
+          <ul>
+            <li><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/contactUs.html">Contact</a></li>
+            <li><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/faq.html">FAQ</a></li>
+            <li><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/help.html">Help</a></li>
+            <li><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/loginP.html">Log Out</a></li>
+          </ul>
+        </div>
+        <div class="clr"></div>
+      </div>
+    </header>
+    
+    <!-- displays Search & Borrow in green box -->
+    <div class="feature">
+      <div class="feature-inner">
+        <h1>Search & Borrow</h1>
+      </div>
+    </div>
+    <span class="portalbooking" style="margin-left:10px;font-size:90%;"><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/student.html">Main Student Page</a></span>
+
+    <!-- defines check boxes for the following fields: title, auther, subject and word or phrse and it also includes the search button and search field-->
+    <div id="searchField" class="form-group"><form action="https://library.ucalgary.ca" method="post" name="searchform">
+      <input name="library" type="hidden" value="ALL" />
+      <input name="sort_by" type="hidden" value="ANY" /> <input name="relevance" type="hidden" value="off" />
+      <input id="searchdata1" class="form-control" name="searchdata1" type="text" />
+      <input id = "search" class="search-button-red" type="button" value="Search" /><br />
+      <label id = "title"><input name="srchfield1" type="radio" value="TI^TITLE^SERIES^Title Processing^title" /> Title</label> &nbsp; &nbsp;
+      <label id = "author"><input name="srchfield1" type="radio" value="AU^AUTHOR^AUTHORS^Author Processing^author" /> Author</label> &nbsp; &nbsp;
+      <label id = "subject"><input name="srchfield1" type="radio" value="SU^SUBJECT^SUBJECTS^^subject" /> Subject</label> &nbsp; &nbsp;
+      <label id = "other"><input checked="checked" name="srchfield1" type="radio" value="GENERAL^SUBJECT^GENERAL^^words or phrase" /> Word or phrase</label></form>
+    </div>
+
+    <!-- creates table and labels -->
+    <div id="content">
+      <div id="content-inner">
+        <table id="table">
+          <tr>
+            <th></th>
+            <!-- first row of the table -->
+            <th>Status</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Subject</th>
+            <th>Note</th>
+          </tr>
+
+          <!--<tr>-->
+          <!--  <td><button class="button button1" id ="borrow"  onclick="changeStatus(this)">Borrow</button></td>-->
+          <!--  <td>Available</td>-->
+          <!--  <td>Intro to MATH</td>-->
+          <!--  <td>Scott</td>-->
+          <!--  <td>Math</td>-->
+          <!--  <td>None</td>-->
+          <!--</tr>-->
+         
+        <!-- creates a 20 by 6 table -->
+          <script>
+           
+              for (row=1; row<=20; row++) {
+                  document.write("<tr>")
+                  for (col=1; col<=6; col++) {
+                      document.write("<td>"  + "<br>" +  "</td>")
+                  }
+                  document.write("</tr>")
+              }
+           
+          </script>
+          
+        </table>
+
+        <div class="clr"></div>
+      </div>
+    </div>
+
+    <!-- displays footer -->
+    <div id="footerblurb">
+      <div id="footerblurb-inner">
+        <div class="column">
+          <h2><span>University of Calgary
+            2500 University Drive NW
+            Calgary, AB T2N 1N4
+            CANADA</span></h2>
+        </div>
+        <div class="clr"></div>
+      </div>
+    </div>
+
+    <!-- displays Copyright in gray, Group 11, Terms of Use, Privacy Policy.  The latter two include the link to their own webaddress -->
+      <footer id="footer">
+        <div id="footer-inner">
+            <p>&copy; Copyright <a>Group 11</a> &#124; <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/termsOfUse.html">Terms of Use</a> &#124; <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/policy.pdf">Privacy Policy</a></p>
+          <div class="clr"></div>
+        </div>
+      </footer>
+
+      <p id="demo"></p>
+
+  </div>
+
+    <!-- handles all the book searching, the bookD.txt file contains all the books that the library owns -->
+      <script>
+      var borrowedList = "";
+      var reservedList = "";
+      
+      var options = document.getElementsByName("srchfield1");
+       var myTable = document.getElementById("table");
+     
+       var i = 0;
+       var currRow = 1;
+       var numOfRows=  20; 
+          fetch("booksD.txt")
+            .then(resp => resp.text())
+            .then(function(data){
+            var fileContent = data.split("\n");
+            while(i < fileContent.length){
+                var withinString = fileContent[i].split(" ");
+                if(withinString[0] != ""){
+                    eachId = "borrow"+ currRow;
+                    myTable.rows[currRow].cells[0].innerHTML = '<input type="button" class="button button1" id = "borrow" value= "Borrow" onclick="changeStatus(this)">'
+                    document.getElementById("borrow").id = eachId;
+                    myTable.rows[currRow].cells[1].innerHTML = withinString[0]
+                    myTable.rows[currRow].cells[2].innerHTML = withinString[1]
+                    myTable.rows[currRow].cells[3].innerHTML = withinString[2]
+                    myTable.rows[currRow].cells[4].innerHTML = withinString[3]
+                    myTable.rows[currRow].cells[5].innerHTML = withinString[4]
+                    currRow ++;
+                }
+                 i++;
+                
+            }
+            
+            
+        })
+      document.getElementById("search").onclick = function () {
+        var n = -1;
+        var t = -1;
+        i = 1;
+        var rowNumber = 1;
+        var optionNum = 0;
+        var aLength = options.length
+
+       //loop for clearing the innerHTML table
+        while(i < numOfRows){
+            myTable.rows[i].cells[0].innerHTML = "";
+            myTable.rows[i].cells[1].innerHTML = "";
+            myTable.rows[i].cells[2].innerHTML = "";
+            myTable.rows[i].cells[3].innerHTML = "";
+            myTable.rows[i].cells[4].innerHTML = "";
+            myTable.rows[i].cells[5].innerHTML = "";
+            i ++;
+        }
+        i = 0;
+
+
+        var choice ="";
+        //serch parameters
+        while ( optionNum< aLength){
+          if(options[optionNum].checked){
+            choice = options[optionNum].value
+          }
+          optionNum++
+        }
+
+        
+
+        var vString = document.getElementById("searchdata1").value;
+        
+        //get data for books
+        fetch("booksD.txt")
+        .then(resp => resp.text())
+        .then(function(data){
+
+          var fileContent = data.split("\n")
+          //console.log(fileContent)
+          
+          
+          while(i < fileContent.length){
+
+            n = fileContent[i].indexOf(vString)
+            if(n >= 0){
+                //checks for books under given field (e.g. subject)
+              var withinString = fileContent[i].split(" ");
+
+                
+              if(choice == "TI^TITLE^SERIES^Title Processing^title"){
+                t = withinString[1].indexOf(vString)
+              }else if(choice == "AU^AUTHOR^AUTHORS^Author Processing^author"){
+                t = withinString[2].indexOf(vString)
+              }else if (choice == "SU^SUBJECT^SUBJECTS^^subject"){
+                t = withinString[3].indexOf(vString)
+              }else if(choice == "GENERAL^SUBJECT^GENERAL^^words or phrase"){
+                t=1
+              }
+              
+              // handles book reservation
+              if( t >=0 )  {
+                if(withinString[0] != ""){
+                    var borrowedArr = borrowedList.split(" ");
+                    var reservedArr = reservedList.split(" ");
+                    eachId = "borrow"+ rowNumber;
+                    myTable.rows[rowNumber].cells[0].innerHTML = '<input type="button" class="button button1" id = "borrow" value= "Borrow" onclick="changeStatus(this)">'
+                    document.getElementById("borrow").id = eachId;
+                    myTable.rows[rowNumber].cells[1].innerHTML = withinString[0]
+                    myTable.rows[rowNumber].cells[2].innerHTML = withinString[1]
+                    myTable.rows[rowNumber].cells[3].innerHTML = withinString[2]
+                    myTable.rows[rowNumber].cells[4].innerHTML = withinString[3]
+                    myTable.rows[rowNumber].cells[5].innerHTML = withinString[4]
+                    for(var n = 0; n < borrowedArr.length; n++){
+                        if(withinString[1] == borrowedArr[n]){
+                            myTable.rows[rowNumber].cells[0].innerHTML = '<input type="button" class="button button1" id = "Reserve" value= "Reserve" onclick="reserveBook(this)">'
+                            eachId = "reserve" + rowNumber
+                            document.getElementById("Reserve").id = eachId;
+                            myTable.rows[rowNumber].cells[1].innerHTML = "Borrowed"
+                            
+                        }
+                    }for(var n = 0; n < reservedArr.length; n++){
+                        if(withinString[1] == reservedArr[n]){
+                            myTable.rows[rowNumber].cells[0].innerHTML = '<input type="button" class="button button1" id = "Reserve" value= "Reserve" onclick="reserveBook(this)">'
+                            eachId = "reserve" + rowNumber
+                            document.getElementById("Reserve").id = eachId;
+                            myTable.rows[rowNumber].cells[1].innerHTML = "Reserved"
+                            document.getElementById(eachId).style.backgroundColor = "gray";
+                            document.getElementById(eachId).attr = "disabled";
+                            
+                        }
+                    }
+                    
+                ////empty row
+                }else if(withinString[0] == ""){
+                   myTable.rows[rowNumber].cells[0].innerHTML = ""
+                   myTable.rows[rowNumber].cells[1].innerHTML = ""
+                   myTable.rows[rowNumber].cells[2].innerHTML = ""
+                   myTable.rows[rowNumber].cells[3].innerHTML = ""
+                   myTable.rows[rowNumber].cells[4].innerHTML = ""
+                   myTable.rows[rowNumber].cells[5].innerHTML = ""
+                }
+                rowNumber++;
+
+              }
+            }
+            i++
+          }
+
+        })
+      }
+
+    //changes status of book
+      function changeStatus(r) {
+        var i = r.parentNode.parentNode.rowIndex;
+        var tempTable=  document.getElementById("table");
+        var id = "borrow" + i;
+        tempTable.rows[i].cells.item(1).innerHTML = "Borrowed";
+        borrowedList = borrowedList + tempTable.rows[i].cells.item(2).innerHTML + " ";
+        
+        document.getElementById(id).style.backgroundColor = "gray";
+        document.getElementById(id).attr = "disabled";
+      }
+      //handles book reservation
+      function reserveBook(r){
+          var i = r.parentNode.parentNode.rowIndex;
+        var id = "reserve" + i;
+        tempTable = document.getElementById("table")
+        tempTable.rows[i].cells.item(1).innerHTML = "Reserved";
+        reservedList = reservedList + tempTable.rows[i].cells.item(2).innerHTML + " ";
+        window.alert("You have reserved " + tempTable.rows[i].cells.item(2).innerHTML + " by " +tempTable.rows[i].cells.item(3).innerHTML)
+        
+        document.getElementById(id).style.backgroundColor = "gray";
+        document.getElementById(id).attr = "disabled";
+      }
+
+      </script>
+    </body>
+
+    </html>

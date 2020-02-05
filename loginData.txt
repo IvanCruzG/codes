@@ -1,0 +1,10 @@
+UserID Password Usertype
+Student1 Spass1 Student
+Student2 Spass2 Student
+1Student Spass1 Student
+
+Lib1 Lpass1 Librarian
+Lib2 Lpass2 Librarian
+
+Admin1 Apass1 Admin
+Admin2 Apass2 Admin

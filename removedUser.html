@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- This program displays a table of removed useers -->
+  <head>
+      <!-- This part of the code handles the background attributes -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Library Administration Office</title>
+    <style type="text/css">
+      html, #page { padding:0; margin:0;}
+      body { margin:0; padding:0; width:100%; color:#959595; font:normal 12px/2.0em Sans-Serif;}
+      h1, h2, h3, h4, h5, h6 {color:darkgreen;}
+      #page { background:#fff;}
+      #header, #footer, #top-nav, #content, #content #contentbar, #content #sidebar { margin:0; padding:0;}
+
+      /* Logo */
+      #logo { padding:0; width:auto; float:left;}
+      #logo h1 a, h1 a:hover { color:darkgreen; text-decoration:none;}
+      #logo h1 span { color:#BCCE98;}
+
+      /* Header */
+      #header { background:#fff; }
+      #header-inner { margin:0 auto; padding:0; width:970px;}
+
+      /* Feature */
+      .feature { background:green;padding:18px;}
+      .feature-inner { margin:auto;width:970px; }
+      .feature-inner h1 {color:#DAE9BC;font-size:32px;}
+
+      /* Menu */
+      #top-nav { margin:0 auto; padding:0px 0 0; height:37px; float:right;}
+      #top-nav ul { list-style:none; padding:0; height:37px; float:left;}
+      #top-nav ul li { margin:0; padding:0 0 0 8px; float:left;}
+      #top-nav ul li a { display:block; margin:0; padding:8px 20px; color:green; text-decoration:none;}
+      #top-nav ul li.active a, #top-nav ul li a:hover { color:#BCCE98;}
+
+      /* Content */
+      #content-inner { margin:0 auto; padding:10px 0; width:90%;background:#fff;}
+
+      #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      #table td, #table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #table tr:nth-child(even){background-color: #f2f2f2;}
+
+      #table tr:hover {background-color: #ddd;}
+
+      #table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      #footer {
+        height: 100px;
+        background-color: lightgray;
+        margin-top: 20px;
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+
+      /* Footerblurb */
+      #footerblurb { background:#DAE9BC;color:green;}
+      #footerblurb-inner { margin:0 auto; width:922px; padding:24px;}
+      #footerblurb .column { margin:0; text-align:justify; float:left;width:250px;padding:0 24px;}
+
+      /* Footer */
+      #footer { background:#fff;}
+      #footer-inner { margin:auto; text-align:center; padding:12px; width:922px;}
+      #footer a {color:green;text-decoration:none;}
+
+      /* Clear both sides to assist with div alignment  */
+      .clr { clear:both; padding:0; margin:0; width:100%; font-size:0px; line-height:0px;}
+    </style>
+
+  </head>
+
+<!-- Displays Header: University of Calgary in Darker green and Library in lighter green -->
+  <body>
+    <div id="page">
+      <header id="header">
+        <div id="header-inner">
+          <div id="logo">
+            <h1><a href="#">University of Calgary<span> Library</span></a></h1>
+          </div>
+          
+          <!-- Displays Log Out and its reference -->
+          <div id="top-nav">
+            <ul>        
+              <li><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/loginP.html">Log Out</a></li>
+            </ul>
+          </div>
+          <div class="clr"></div>
+        </div>
+      </header>
+      
+      <!-- displays Removed users in a green box -->
+      <div class="feature">
+        <div class="feature-inner">
+          <h1>Removed Users</h1>
+        </div>
+      </div>
+      
+    <!-- Displays Main Admin Page and includes its webaddress -->
+      <div id="content">
+        <div id="content-inner">
+            <span class="portalbooking" style="margin-left:10px;font-size:90%;"><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/adminOffice.html">Main Admin Page</a></span>
+            <!--his handles the table, displays the title of the table as Removed Users, and the fields Removed time
+            , Name, UCID, Email and Note-->
+          <table id="table">
+            <caption><h2>Removed Users</h2></caption>
+            <tr>
+              <th>Removed Time</th>
+              <th>Name</th>
+              <th>UCID</th>
+              <th>Email</th>
+              <th>Note</th>
+            </tr>
+
+            <!-- there are 20 rows and 5 columns for the table -->
+            <script>
+            
+              for (row=1; row<=20; row++) {
+                  document.write("<tr>")
+                  for (col=1; col<=5; col++) {
+                      document.write("<td>"  + "<br>" +  "</td>")
+                  }
+                  document.write("</tr>")
+              }
+           
+          </script>
+
+          </table>
+
+          <div class="clr"></div>
+        </div>
+      </div>
+
+    <!-- displays footer: University of Calgary ... -->
+      <div id="footerblurb">
+        <div id="footerblurb-inner">
+          <div class="column">
+            <h2><span>University of Calgary
+              2500 University Drive NW
+              Calgary, AB T2N 1N4
+              CANADA</span></h2>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+
+        <!-- displays Copyright in gray, Group 11, Terms of Use, Privacy Policy.  The latter two include the link to their own webaddress -->
+        <footer id="footer">
+          <div id="footer-inner">
+       <p>&copy; Copyright <a>Group 11</a> &#124; <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/termsOfUse.html">Terms of Use</a> &#124; <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/policy.pdf">Privacy Policy</a></p>
+            <div class="clr"></div>
+          </div>
+        </footer>
+
+        <!-- displays Try it button -->
+        <button onclick="clearIt()">Try it</button>
+
+
+      </div>
+      <!-- reads the removed users form the removedUserData.txt -->
+      <script>
+      var myTable = document.getElementById("table");
+      var rowNumber = 1;
+      var i = 0;
+      var noteIndex = 5;
+      
+      
+           fetch("removedUserData.txt")
+             .then(resp => resp.text())
+             .then(function(data){
+                 var fileContent = data.split("\n");
+                 
+                 while(i < fileContent.length){
+                     var cellContent = fileContent[i].split(" ");
+                     if(cellContent != ""){
+                         var noteContent = "";
+                         myTable.rows[rowNumber].cells[0].innerHTML = cellContent[0];
+                         myTable.rows[rowNumber].cells[1].innerHTML = cellContent[1] + ", " + cellContent[1];
+                         myTable.rows[rowNumber].cells[2].innerHTML = cellContent[2];
+                         myTable.rows[rowNumber].cells[3].innerHTML = cellContent[3];
+                         while(noteIndex < cellContent.length){
+                             noteContent = noteContent +cellContent[noteIndex] + " ";
+                             noteIndex++;
+                         }
+                         myTable.rows[rowNumber].cells[4].innerHTML = noteContent;
+                         noteIndex = 5;
+                         rowNumber++;
+                     }
+                     
+                     i++;
+                 }
+                 
+                 
+                 
+             })
+          
+          
+      </script>
+    </body>
+
+    </html>

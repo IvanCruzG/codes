@@ -1,0 +1,336 @@
+ <!DOCTYPE html>
+<html lang="en">
+    <!-- This program handles the method of payment for the user account -->
+<head>
+<!-- handles all the background attributes -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Library Management System</title>
+
+    <title>Pay Fees</title>
+    <style type="text/css">
+      html, #page { padding:0; margin:0;}
+      body { margin:0; padding:0; width:100%; color:#959595; font:normal 12px/2.0em Sans-Serif;}
+      h1, h2, h3, h4, h5, h6 {color:darkgreen;}
+      #page { background:#fff;}
+      #header, #footer, #top-nav, #content, #content #contentbar, #content #sidebar { margin:0; padding:0;}
+
+      /* Logo */
+      #logo { padding:0; width:auto; float:left;}
+      #logo h1 a, h1 a:hover { color:darkgreen; text-decoration:none;}
+      #logo h1 span { color:#BCCE98;}
+
+      /* Header */
+      #header { background:#fff; }
+      #header-inner { margin:0 auto; padding:0; width:970px;}
+
+      /* Feature */
+      .feature { background:green;padding:18px;}
+      .feature-inner { margin:auto;width:970px; }
+      .feature-inner h1 {color:#DAE9BC;font-size:32px;}
+
+      /* Menu */
+      #top-nav { margin:0 auto; padding:0px 0 0; height:37px; float:right;}
+      #top-nav ul { list-style:none; padding:0; height:37px; float:left;}
+      #top-nav ul li { margin:0; padding:0 0 0 8px; float:left;}
+      #top-nav ul li a { display:block; margin:0; padding:8px 20px; color:green; text-decoration:none;}
+      #top-nav ul li.active a, #top-nav ul li a:hover { color:#BCCE98;}
+
+      /* Content */
+      #content-inner { margin:0 auto; padding:10px 0; width:90%;background:#fff;}
+
+      #box {
+        border-radius: 25px;
+        background-color: #4CAF50; /* Green */
+        padding: 20px;
+        width: 200px;
+        height: 150px;
+
+        font-size: 17px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+
+
+    }
+
+    .button {
+        border-radius: 7px;
+        background-color: white; /* Green */
+        border: none;
+        color: #4CAF50;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 30px 2px;
+        cursor: pointer;
+      }
+
+    .button1 {font-size: 13px;}
+
+    #myDIV {
+        width: 75%;
+        padding: 50px 0;
+        text-align: center;
+        background-color: white;
+        margin-top: 20px;
+        display: none;
+        float: right;
+    }
+
+    /*--------------------Hidden Payment Form------------------------*/
+.row {
+  display: -ms-flexbox; /* IE10 */
+
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 16px;
+}
+
+.col-50, .col-75{
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+
+/*--------------------End of Hidden Payment Form------------------------*/
+
+
+      #footer {
+        height: 100px;
+        background-color: lightgray;
+        margin-top: 20px;
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+
+      /* Footerblurb */
+      #footerblurb { background:#DAE9BC;color:green;}
+      #footerblurb-inner { margin:0 auto; width:922px; padding:24px;}
+      #footerblurb .column { margin:0; text-align:justify; float:left;width:250px;padding:0 24px;}
+
+      /* Footer */
+      #footer { background:#fff;}
+      #footer-inner { margin:auto; text-align:center; padding:12px; width:922px;}
+      #footer a {color:green;text-decoration:none;}
+
+      /* Clear both sides to assist with div alignment  */
+      .clr { clear:both; padding:0; margin:0; width:100%; font-size:0px; line-height:0px;}
+    </style>
+
+  </head>
+
+
+  <body>
+    <div id="page">
+      <header id="header">
+        <div id="header-inner">
+            <!-- displays University of Calgary in darker green and Library in lighter green -->
+          <div id="logo">
+              <h1><a href="#">University of Calgary<span> Library</span></a></h1>
+          </div>
+          <div id="top-nav">
+            <!-- displays the references: Contact, FAQ, Help and Log Out. Each of these has a link to its corresponding webpage -->
+            <ul>
+              <li><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/contactUs.html">Contact</a></li>
+              <li><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/faq.html">FAQ</a></li>
+              <li><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/help.html">Help</a></li>
+                <li><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/loginP.html">Log Out</a></li>
+            </ul>
+          </div>
+          <div class="clr"></div>
+        </div>
+      </header>
+      
+      <!-- displays Pay Fees -->
+      <div class="feature">
+        <div class="feature-inner">
+          <h1>Pay Fees</h1>
+        </div>
+      </div>
+
+    <!-- displays  message and inclues Pay fees button -->
+      <div id="content">
+          <span class="portalbooking" style="margin-left:10px;font-size:90%;"><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/student.html">Main Student Page</a></span>
+        <div id="content-inner">
+          <div id="box">
+              <h id = "fee">You owe $200.00</h>
+              <button class="button button1" onclick="pay(this)">Pay fees</button>
+          </div>
+
+        <!-- handles dimensions and attributes for  payment form -->
+          <div id="myDIV">
+            <div class="row">
+              <div class="col-75">
+                <div class="container">
+                  <!--<form action="">-->
+
+                    <div class="row">
+
+                    <!-- displays pictures of credit cards accepted -->
+                      <div class="col-50">
+                        <h3>Payment</h3>
+                        <label for="fname">Accepted Cards</label>
+                        <div class="icon-container">
+                          <i class="fa fa-cc-visa" style="color:navy;"></i>
+                          <i class="fa fa-cc-amex" style="color:blue;"></i>
+                          <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                          <i class="fa fa-cc-discover" style="color:orange;"></i>
+                        </div>
+                        
+                        <!-- displays name on card field and its box with a place holder -->
+                        <label for="cname">Name on Card</label>
+                        <input type="text" id="cname" name="cardname" placeholder="John More Doe" required>
+                        
+                        <!-- displays credit card number field and its box with a place holder -->
+                        <label for="ccnum">Credit card number</label>
+                        <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
+                        
+                        <!-- displays expiry month field and its box with a place holder -->
+                        <label for="expmonth">Exp Month</label>
+                        <input type="text" id="expmonth" name="expmonth" placeholder="September" required>
+                        <div class="row">
+                          <div class="col-50">
+                              <!-- displays expiry year field and its box with a place holder -->
+                            <label for="expyear">Exp Year</label>
+                            <input type="text" id="expyear" name="expyear" placeholder="2018" required>
+                          </div>
+                          <!-- displays cvv field and its box with a place holder -->
+                          <div class="col-50">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="352" required>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <!-- defines click to pay button -->
+                    <input type="submit" value="Click to pay" class="btn" onclick="submit(this)">
+                  <!--</form>-->
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="clr"></div>
+
+
+
+        </div>
+      </div>
+
+        <!-- displays footer -->
+      <div id="footerblurb">
+        <div id="footerblurb-inner">
+          <div class="column">
+            <h2><span>University of Calgary
+              2500 University Drive NW
+              Calgary, AB T2N 1N4
+              CANADA</span></h2>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+
+        <!-- displays Copyright in gray, Group 11, Terms of Use, Privacy Policy.  The latter two include the link to their own webaddress -->
+        <footer id="footer">
+          <div id="footer-inner">
+            <p>&copy; Copyright <a>Group 11</a> &#124; <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/termsOfUse.html">Terms of Use</a> &#124; <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/policy.pdf">Privacy Policy</a></p>
+            <div class="clr"></div>
+          </div>
+        </footer>
+
+
+
+      </div>
+
+    <!-- handles payment -->
+    <script>
+
+
+    function pay(r) {
+
+        var x = document.getElementById("myDIV");
+        x.style.display = "block";
+
+    }
+     // displays you own $0.00 when all fields are filled in, otherwise an error message pops up.
+    function submit(r) {
+        var cnameContent = document.getElementById("cname").value
+        var ccnumContent = document.getElementById("ccnum").value
+        var expmonthContent = document.getElementById("expmonth").value
+        var expyearContent = document.getElementById("expyear").value
+        var cvvContent = document.getElementById("cvv").value
+        
+        if(cnameContent != "" && ccnumContent != "" && expmonthContent != "" && expyearContent != "" && cvvContent != "") {
+            document.getElementById("myDIV").style.display = "none";
+            document.getElementById("fee").innerHTML = "You owe $0.00"
+        } else{
+                window.alert("Please fill out all the fields!")
+        }
+        
+    }
+
+    </script>
+
+    </body>
+
+    </html>

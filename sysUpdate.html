@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- This program creates a page that displays a table of system updates history -->
+<head>
+    <!-- handles background attributes -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Library Administration Office</title>
+    <style type="text/css">
+      html, #page { padding:0; margin:0;}
+      body { margin:0; padding:0; width:100%; color:#959595; font:normal 12px/2.0em Sans-Serif;}
+      h1, h2, h3, h4, h5, h6 {color:darkgreen;}
+      #page { background:#fff;}
+      #header, #footer, #top-nav, #content, #content #contentbar, #content #sidebar { margin:0; padding:0;}
+
+      /* Logo */
+      #logo { padding:0; width:auto; float:left;}
+      #logo h1 a, h1 a:hover { color:darkgreen; text-decoration:none;}
+      #logo h1 span { color:#BCCE98;}
+
+      /* Header */
+      #header { background:#fff; }
+      #header-inner { margin:0 auto; padding:0; width:970px;}
+
+      /* Feature */
+      .feature { background:green;padding:18px;}
+      .feature-inner { margin:auto;width:970px; }
+      .feature-inner h1 {color:#DAE9BC;font-size:32px;}
+
+      /* Menu */
+      #top-nav { margin:0 auto; padding:0px 0 0; height:37px; float:right;}
+      #top-nav ul { list-style:none; padding:0; height:37px; float:left;}
+      #top-nav ul li { margin:0; padding:0 0 0 8px; float:left;}
+      #top-nav ul li a { display:block; margin:0; padding:8px 20px; color:green; text-decoration:none;}
+      #top-nav ul li.active a, #top-nav ul li a:hover { color:#BCCE98;}
+
+      /* Content */
+      #content-inner { margin:0 auto; padding:10px 0; width:90%;background:#fff;}
+
+      #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      #table td, #table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #table tr:nth-child(even){background-color: #f2f2f2;}
+
+      #table tr:hover {background-color: #ddd;}
+
+      #table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      #footer {
+        height: 100px;
+        background-color: lightgray;
+        margin-top: 20px;
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+
+      /* Footerblurb */
+      #footerblurb { background:#DAE9BC;color:green;}
+      #footerblurb-inner { margin:0 auto; width:922px; padding:24px;}
+      #footerblurb .column { margin:0; text-align:justify; float:left;width:250px;padding:0 24px;}
+
+      /* Footer */
+      #footer { background:#fff;}
+      #footer-inner { margin:auto; text-align:center; padding:12px; width:922px;}
+      #footer a {color:green;text-decoration:none;}
+
+      /* Clear both sides to assist with div alignment  */
+      .clr { clear:both; padding:0; margin:0; width:100%; font-size:0px; line-height:0px;}
+    </style>
+
+  </head>
+
+
+  <body>
+    <div id="page">
+      <header id="header">
+        <div id="header-inner">
+        <!-- Displays University of Calgary in darker green and Library -->
+          <div id="logo">
+            <h1><a href="#">University of Calgary<span> Library</span></a></h1>
+          </div>
+          <div id="top-nav">
+              <!-- Displays Log Out and is linked to the Login page -->
+            <ul>
+                  <li><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/loginP.html">Log Out</a></li>
+            </ul>
+          </div>
+          <div class="clr"></div>
+        </div>
+      </header>
+      
+        <!-- displays System updates in a green box -->
+      <div class="feature">
+        <div class="feature-inner">
+          <h1>System Updates</h1>
+        </div>
+      </div>
+
+        <!-- creates the system updates history table -->
+      <div id="content">
+        <div id="content-inner">
+            <span class="portalbooking" style="margin-left:10px;font-size:90%;"><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/adminOffice.html">Main Admin Page</a></span>
+          <table id="table">
+              <!-- displays title of table -->
+            <caption><h2>System Updates History</h2></caption>
+            <tr>
+                <!-- displays lables of table (first row) -->
+              <th>Updated Time</th>
+              <th>Updated Content</th>
+              <th>Note</th>
+            </tr>
+
+            <!-- displays update number 1 -->
+            <tr>
+              <td>2019-03-12-23:46:59</td>
+              <td>Updated librarian UI</td>
+              <td>None</td>
+            </tr>
+            
+            <!-- displays update number 2 -->
+            <tr>
+              <td>2019-03-13-16:27:09</td>
+              <td>Updated student UI</td>
+              <td>None</td>
+            </tr>
+
+            <!-- displays update number 3 -->
+            <tr>
+              <td>2019-03-15-00:00:00</td>
+              <td>Daily system maintainance</td>
+              <td>None</td>
+            </tr>
+
+            <!-- displays update number 4 -->
+            <tr>
+              <td>2019-03-15-11:07:34</td>
+              <td>Updated admin UI</td>
+              <td>None</td>
+            </tr>
+
+          </table>
+
+          <div class="clr"></div>
+        </div>
+      </div>
+
+        <!-- displays footer -->
+      <div id="footerblurb">
+        <div id="footerblurb-inner">
+          <div class="column">
+            <h2><span>University of Calgary
+              2500 University Drive NW
+              Calgary, AB T2N 1N4
+              CANADA</span></h2>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+
+        <!-- displays Copyright in gray, Group 11, Terms of Use and Privacy Policy in green. The latter two include links to their page -->
+        <footer id="footer">
+          <div id="footer-inner">
+              <p>&copy; Copyright <a>Group 11</a> &#124; <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/termsOfUse.html">Terms of Use</a> &#124; <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/policy.pdf">Privacy Policy</a></p>
+            <div class="clr"></div>
+          </div>
+        </footer>
+
+      </div>
+    </body>
+
+    </html>

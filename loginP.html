@@ -1,0 +1,361 @@
+<!-- Resource online:
+https://www.w3schools.com/howto/howto_css_social_login.asp
+https://www.w3schools.com/howto/howto_js_dropdown_sidenav.asp -->
+
+
+<!DOCTYPE html>
+<!-- This program creates a login page where the users enters their username and
+their password. If a user does not  have an account, they can create and accound 
+by pressind the Sign up button. If a user forgets their password, they can press
+the forgot password button. And they can also press the login button when they 
+name and password fields are both filled in. An error message will pop up if the
+did not fill in these two fields-->
+<html>
+    <!-- This part of the code handles the background attributes -->
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <title>Library Management System</title>
+   <style type="text/css">
+   * {box-sizing: border-box}
+
+/* style the container */
+.container {
+ position: relative;
+ border-radius: 5px;
+ background-color: #f2f2f2;
+ padding: 20px 0 30px 0;
+}
+
+/* style inputs and link buttons */
+input,
+.btn {
+ width: 100%;
+ padding: 12px;
+ border: none;
+ border-radius: 4px;
+ margin: 5px 0;
+ opacity: 0.85;
+ display: block;
+ font-size: 17px;
+ line-height: 20px;
+ text-decoration: none; /* remove underline from anchors */
+}
+
+input:hover,
+.btn:hover {
+ opacity: 1;
+}
+
+/* style the submit button */
+input[type=submit] {
+ background-color: #4CAF50;
+ color: white;
+ cursor: pointer;
+}
+
+input[type=submit]:hover {
+ background-color: #45a049;
+}
+
+/* Two-column layout */
+.col {
+ float: center;
+ width: 50%;
+ margin: auto;
+ padding: 0 50px;
+ margin-top: 6px;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+ content: "";
+ clear: both;
+}
+
+/* Logo */
+#logo { padding:0; width:auto; text-align: center;}
+#logo h1 a, h1 a:hover { color:darkgreen; text-decoration:none;}
+#logo h1 span { color:#BCCE98;}
+
+/* text inside the vertical line */
+.inner {
+ position: absolute;
+ top: 50%;
+ transform: translate(-50%, -50%);
+ background-color: #f1f1f1;
+ border: 1px solid #ccc;
+ border-radius: 50%;
+ padding: 8px 10px;
+}
+
+/* hide some text on medium and large screens */
+.hide-md-lg {
+ display: none;
+}
+
+/* bottom container */
+.bottom-container {
+ text-align: center;
+ /* background-color: #666; */
+ background-color: #f1f1f1;
+ border-radius: 0px 0px 4px 4px;
+ display: block;
+}
+
+a[class=btn] {
+ background-color: #4CAF50;
+ color: white;
+ cursor: pointer;
+}
+
+a[class=btn]:hover {
+ background-color: #45a049;
+}
+
+/* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 650px) {
+ .col {
+   width: 100%;
+   margin-top: 0;
+ }
+ /* hide the vertical line */
+ .vl {
+   display: none;
+ }
+ /* show the hidden text on small screens */
+ .hide-md-lg {
+   display: block;
+   text-align: center;
+ }
+}
+
+/*-----------------------------Dropdown List--------------------------------*/
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 100%;
+  /* position: fixed; */
+  border-radius: 4px;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Footerblurb */
+#footerblurb { background:#DAE9BC;color:green;}
+#footerblurb-inner { margin:0 auto; width:922px; padding:24px;}
+#footerblurb .column { margin:0; text-align:justify; float:left;width:320px;padding:0 24px;}
+/* Footer */
+#footer { background:#fff;}
+#footer-inner { margin:auto; text-align:center; padding:12px; width:922px;}
+#footer a {color:green;text-decoration:none;}
+
+/* Clear both sides to assist with div alignment  */
+.clr { clear:both; padding:0; margin:0; width:100%; font-size:0px; line-height:0px;}
+
+body { margin:0; padding:0; width:100%; color:#959595; font:normal 12px/2.0em Sans-Serif;}
+
+
+
+   </style>
+ </head>
+
+
+
+
+
+ <body>
+   <div class="container">
+    <div class="row">
+      <div id="logo">
+        <h1><a href="#" style="text-align:center">University of Calgary<span style="text-align:center"> Library</span></a></h1>
+      </div>
+
+    <!-- displays Sign in in a black box -->
+      <div class="col">
+        <div class="sidenav">
+          <p>Sign in</p>
+        </div>
+
+      </div>
+
+    <!-- This handle the input boxes for username and password -->
+      <div class="col">
+
+        <input type="text" id = "uName" name = "username" placeholder="Enter username"  required/>
+        <input type="password"  id = "pWord" name= "password" placeholder="Enter password" required/>
+
+        <input type="submit" id = "subm" value="Login">
+
+      </div>
+
+    </div>
+
+</div>
+
+<!-- displyas Sign and Forgot password? buttons and their link to their corresponding
+pages -->
+<div class="bottom-container">
+  <div class="row">
+    <div class="col">
+      <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/signup.html" class="btn">Sign up</a>
+    </div>
+    <div class="col">
+      <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/forgotPassword.html" class="btn">Forgot password?</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  var dropdown = document.getElementsByClassName("dropdown-btn");
+  var i;
+
+  for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+      } else {
+        dropdownContent.style.display = "block";
+      }
+    });
+  }
+</script>
+
+<!-- handles user and password data and displays errors when using inappropriate
+data -->
+<script>
+
+         document.getElementById("subm").onclick = function () {
+           var usrPass = document.getElementById("pWord").value;
+           var usrName = document.getElementById("uName").value;
+           
+           
+            var n = -1;
+            var i = 0;
+            var optionNum = 0;
+
+
+            fetch("loginData.txt")
+             .then(resp => resp.text())
+             .then(function(data){
+                
+              var fileContent = data.split("\n")
+              //Temporary array to make sure "Student" in "1Student" doesn't count
+              var checkingDups = fileContent.slice(0, fileContent.length);
+
+              if(usrName != "" && usrPass != ""){
+                  
+              while(i < fileContent.length){
+                  
+                  //Adding empty space " " to make sure usrName is the username in the text file
+                  checkingDups[i] = " " + checkingDups[i];
+                  
+                  //Using the temporary array to check
+                  n = checkingDups[i].indexOf(" " + usrName + " ")
+                  
+                  if(n >= 0){
+                      var withinString = fileContent[i].split(" ");
+
+                      if (usrPass == withinString[1]){
+                          
+                        if(withinString[2] == "Student"){
+                          window.location.href = 'https://ourlibrary11.cpsc.ucalgary.ca/it2/student.html';
+                          break;
+                        }else if(withinString[2] == "Librarian"){
+                          location.href = "https://ourlibrary11.cpsc.ucalgary.ca/it2/Librarian.html";
+                          break;
+                        }else if (withinString[2] == "Admin"){
+                         location.href = "https://ourlibrary11.cpsc.ucalgary.ca/it2/adminOffice.html";
+                         break;
+                        }
+                          
+                      }
+
+                  }
+                  i++
+                  if(i == fileContent.length &&  n < 0){
+                      window.alert("Invalid Login")
+                  }
+              }
+              //checks if usernane and passwowrd are empty strings, if so, an error message pops up
+              }else if(usrName == ""){
+                    window.alert("Enter your userID.")
+              }else if(usrPass == ""){
+                  window.alert("Enter your password.")
+              }
+              else{
+                  window.alert("Invalid username/password. Please try again")
+              }
+
+         })
+
+     };
+
+
+</script>
+
+<!-- Displays footer: University of Calgary ... -->
+<div id="footerblurb">
+  <div id="footerblurb-inner">
+
+    <div class="column">
+      <h2><span>University of Calgary
+        2500 University Drive NW
+        Calgary, AB T2N 1N4
+        CANADA</span></h2>
+      <p><script>generateText(2)</script></p>
+    </div>
+
+    <div class="clr"></div>
+  </div>
+</div>
+
+<!-- Displays Copy right in gray, Group 11, Terms of Use and Privacy Policy in green.
+The latter two contain a link to their corresponding page -->
+<footer id="footer">
+  <div id="footer-inner">
+  <p>&copy; Copyright <a>Group 11</a> &#124; <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/termsOfUse.html">Terms of Use</a> &#124; <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/policy.pdf">Privacy Policy</a></p>
+    <div class="clr"></div>
+  </div>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <!-- This page handle the purchases of books, and contains the followin fields:
+     authors, title, subject and notes. Once the click to add button the book will
+     be added to a list. It can also be removed from the list by pressing the 
+     remove button-->
+<head>
+    <!--This section handles the background properties -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Library Management System</title>
+	<style type="text/css">html, #page { padding:0; margin:0;}
+     body { margin:0; padding:0; width:100%; color:#959595; font:normal 12px/2.0em Sans-Serif;}
+     h1, h2, h3, h4, h5, h6 {color:darkgreen;}
+     #page { background:#fff;}
+     #header, #footer, #top-nav, #content, #content #contentbar, #content #sidebar { margin:0; padding:0;}
+
+     /* Logo */
+     #logo { padding:0; width:auto; float:left;}
+     #logo h1 a, h1 a:hover { color:darkgreen; text-decoration:none;}
+     #logo h1 span { color:#BCCE98;}
+
+     /* Header */
+     #header { background:#fff; }
+     #header-inner { margin:0 auto; padding:0; width:970px;}
+
+     /* Feature */
+     .feature { background:green;padding:18px;}
+     .feature-inner { margin:auto;width:970px; }
+     .feature-inner h1 {color:#DAE9BC;font-size:32px;}
+
+     /* Menu */
+     #top-nav { margin:0 auto; padding:0px 0 0; height:37px; float:right;}
+     #top-nav ul { list-style:none; padding:0; height:37px; float:left;}
+     #top-nav ul li { margin:0; padding:0 0 0 8px; float:left;}
+     #top-nav ul li a { display:block; margin:0; padding:8px 20px; color:green; text-decoration:none;}
+     #top-nav ul li.active a, #top-nav ul li a:hover { color:#BCCE98;}
+
+     /* Content */
+     #content-inner { margin:0 auto; padding:10px 0; width:970px;background:#fff;}
+     #content #contentbar { margin:0; padding:0; float:right; width:760px;}
+     #content #contentbar .article { margin:0 0 24px; padding:0 20px 0 15px; }
+     
+     
+     #addField {
+         height: 80px;
+         /*display: inline-block;*/
+     }
+     
+     #table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+     #table td, #table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+  #table tr:nth-child(even){background-color: #f2f2f2;}
+
+  #table tr:hover {background-color: #ddd;}
+
+  #table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .button1 {font-size: 13px;}
+
+     /* Footerblurb */
+     #footerblurb { background:#DAE9BC;color:green;}
+     #footerblurb-inner { margin:0 auto; width:922px; padding:24px;}
+     #footerblurb .column { margin:0; text-align:justify; float:left;width:250px;padding:0 24px;}
+
+     /* Footer */
+     #footer { background:#fff;}
+     #footer-inner { margin:auto; text-align:center; padding:12px; width:922px;}
+     #footer a {color:green;text-decoration:none;}
+
+     /* Clear both sides to assist with div alignment  */
+     .clr { clear:both; padding:0; margin:0; width:100%; font-size:0px; line-height:0px;}
+	</style>
+	
+</head>
+
+<!-- Displays University of Calgary in darker green and Library in lighter green -->
+<body>
+<div id="page">
+<header id="header">
+<div id="header-inner">
+<div id="logo">
+<h1><a href="#">University of Calgary<span> Library</span></a></h1>
+</div>
+
+<!-- This is the Contact reference and will direct user to the Contact page once it is clicked ont -->
+<div id="top-nav">
+<ul>
+	<li><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/contactUsLib.html">Contact</a></li>
+	<li><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/loginP.html">Log Out</a></li>
+</ul>
+</div>
+
+<div class="clr"></div>
+</div>
+</header>
+
+<!-- Display Purchase Items -->
+<div class="feature">
+<div class="feature-inner">
+<h1>Purchase Items</h1>
+</div>
+</div>
+
+<!-- This defines the table and the fields mentioned above and displays then as input boxes-->
+<span class="portalbooking" style="margin-left:10px;font-size:90%;"><a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/Librarian.html">Main Librarian Page</a></span>
+<div id="content">
+<div id="content-inner">
+<div id="addField"><label for="addT">Title</label> <input id="addT" required="" type="text" /> <label for="addA">Author</label> <input id="addA" required="" type="text" /> <label for="addS">Subject</label> <input id="addS" required="" type="text" /> <label for="addN">Note</label> <input id="addN" type="text" /> <input class="button button1" onclick="addBook(this)" type="submit" value="Click to add" /></div>
+
+<table id="table">
+	<tbody>
+		<tr>
+			<th></th>
+			<!--<th>Status</th>-->
+			<th>Title</th>
+			<th>Author</th>
+			<th>Subject</th>
+			<th>Note</th>
+		</tr>
+		<script>
+           
+              for (row=1; row<=20; row++) {
+                  document.write("<tr>")
+                  for (col=1; col<=5; col++) {
+                      document.write("<td>"  + "<br>" +  "</td>")
+                  }
+                  document.write("</tr>")
+              }
+           
+          </script>
+	</tbody>
+</table>
+
+<div class="clr"></div>
+</div>
+</div>
+
+<!-- Displays University of Calgary ... as a footer -->
+<div id="footerblurb">
+<div id="footerblurb-inner">
+<div class="column">
+<h2><span>University of Calgary 2500 University Drive NW Calgary AB, T2N 1N4 CANADA</span></h2>
+</div>
+
+<div class="clr"></div>
+</div>
+</div>
+
+<!-- Diplays Copyright in gray, Group 11, Terms of Use and Privacy Policy in green. The latter two have their own links to their pages -->
+<footer id="footer">
+<div id="footer-inner">
+<p>&copy; Copyright <a>Group 11</a> | <a href="https://ourlibrary11.cpsc.ucalgary.ca/it2/termsOfUse.html">Terms of Use</a> | <a href="" https:="" it2="" ourlibrary11.cpsc.ucalgary.ca="" policy.html="">Privacy Policy</a></p>
+
+<div class="clr"></div>
+</div>
+</footer>
+</div>
+
+<!-- This part of the code handles the addition and removal of books on the table
+ created and hanldes errors if a field is not filled and displays error message-->
+<script>
+      var options = document.getElementsByName("srchfield1");
+       var myTable = document.getElementById("table");
+       var i = 0;
+       var currRow = 1;
+       var numOfRows=  20; 
+          fetch("booksD.txt")
+            .then(resp => resp.text())
+            .then(function(data){
+            var fileContent = data.split("\n");
+            while(i < fileContent.length){
+                var withinString = fileContent[i].split(" ");
+                if(withinString[0] != ""){
+                    
+                    myTable.rows[currRow].cells[0].innerHTML = '<input type="button" class="button button1" value="Remove" onclick="removeBook(this)">'
+                //  myTable.rows[currRow].cells[1].innerHTML = withinString[0]
+                 myTable.rows[currRow].cells[1].innerHTML = withinString[1]
+                 myTable.rows[currRow].cells[2].innerHTML = withinString[2]
+                 myTable.rows[currRow].cells[3].innerHTML = withinString[3]
+                 myTable.rows[currRow].cells[4].innerHTML = withinString[4]
+                 currRow ++;
+                }
+                 i++;
+            }
+        })
+        //removes books
+        function removeBook(r) {
+            var i = r.parentNode.parentNode.rowIndex;
+            document.getElementById("table").deleteRow(i);
+        }
+        
+        //adds books and handles conditions and displays error message
+        function addBook(r) {
+            var newTitle = document.getElementById("addT").value
+            var newAuthor = document.getElementById("addA").value
+            var newSub = document.getElementById("addS").value
+            var newNote = document.getElementById("addN").value
+            
+            if (newTitle != "" && newAuthor != "" && newSub != "") {
+                var myTable = document.getElementById("table");
+                myTable.rows[currRow].cells[0].innerHTML = '<input type="button" class="button button1" value="Remove" onclick="removeBook(this)">'
+                myTable.rows[currRow].cells[1].innerHTML = newTitle
+                myTable.rows[currRow].cells[2].innerHTML = newAuthor
+                myTable.rows[currRow].cells[3].innerHTML = newSub
+                myTable.rows[currRow].cells[4].innerHTML = newNote
+                currRow++;
+                alert("New book added!")
+            } else {
+                window.alert("Please fill out first three fields!")
+            }
+        }
+    </script></body>
+</html>
